@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+package proto.v1;
+
+import "google/protobuf/timestamp.proto";
+import "proto/v1/enum.proto";
+import "proto/v1/tag.proto";
+
+option go_package = "github.com/jiayinzhang-mint/protoc-gen-go-govmomi-bridge/fixture/gen/proto/v1";
+
+message WaitOptions {
+  int32 maxWaitSeconds = 1 [(govmomi) = "name:MaxWaitSeconds,type:int32"];
+  optional int32 maxObjectUpdates = 2 [(govmomi) = "name:MaxObjectUpdates,type:int32"];
+}
+
+message NetworkProfile {
+  bool enabled = 1 [(govmomi) = "name:Enabled,type:bool"];
+  repeated VirtualSwitchProfile vswitch = 2 [(govmomi) = "name:Vswitch,type:[]VirtualSwitchProfile"];
+}
+
+message VstorageObjectVCenterQueryChangedDiskAreasRequestType {
+  ManagedObjectReference this = 1 [(govmomi) = "name:This,type:ManagedObjectReference"];
+}
+
+message ScheduledTaskInfo {
+  google.protobuf.Timestamp lastModifiedTime = 1 [(govmomi) = "name:LastModifiedTime,type:time.Time"];
+}
+
+message PropertyChange {
+  string name = 1 [(govmomi) = "name:Name,type:string"];
+  PropertyChangeOp op = 2 [(govmomi) = "name:Op,type:PropertyChangeOp"];
+  optional Any val = 3 [(govmomi) = "name:Val,type:AnyType"];
+}
+
+message VirtualSwitchProfile {
+  bool enabled = 1 [(govmomi) = "name:Enabled,type:bool"];
+  string key = 2 [(govmomi) = "name:Key,type:string"];
+  string name = 3 [(govmomi) = "name:Name,type:string"];
+}
+
+message ManagedObjectReference {
+  string type = 1 [(govmomi) = "name:Type,type:string"];
+  string value = 2 [(govmomi) = "name:Value,type:string"];
+}
+
+message Any {
+  bytes value = 1;
+}
+
+message VmLimitLicenseFault {
+  optional LocalizedMethodFault faultCause = 1 [(govmomi) = "name:FaultCause,type:LocalizedMethodFault"];
+  repeated LocalizableMessage faultMessage = 2 [(govmomi) = "name:FaultMessage,type:[]LocalizableMessage"];
+  int32 limit = 3 [(govmomi) = "name:Limit,type:int32"];
+}
+
+message MethodFault {
+  optional LocalizedMethodFault faultCause = 1 [(govmomi) = "name:FaultCause,type:LocalizedMethodFault"];
+  repeated LocalizableMessage faultMessage = 2 [(govmomi) = "name:FaultMessage,type:[]LocalizableMessage"];
+}
+
+message LocalizedMethodFault {
+  MethodFault fault = 1 [(govmomi) = "name:Fault,type:MethodFault"];
+  optional string localizedMessage = 2 [(govmomi) = "name:LocalizedMessage,type:string"];
+}
+
+message LocalizableMessage {
+  string key = 1 [(govmomi) = "name:Key,type:string"];
+  repeated KeyAnyValue arg = 2 [(govmomi) = "name:Arg,type:[]KeyAnyValue"];
+  optional string message = 3 [(govmomi) = "name:Message,type:string"];
+}
+
+message KeyAnyValue {
+  string key = 1 [(govmomi) = "name:Key,type:string"];
+  Any value = 2 [(govmomi) = "name:Value,type:AnyType"];
+}

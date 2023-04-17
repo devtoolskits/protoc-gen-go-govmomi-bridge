@@ -1,0 +1,15 @@
+version: v1
+plugins:
+  - name: go
+    out: gen
+    opt: paths=source_relative
+  - name: go-grpc
+    out: gen
+    opt:
+      - paths=source_relative
+  - name: go-govmomi-bridge
+    out: gen
+    opt:
+      - paths=source_relative
+      - include_enum_proto_files=proto/v1/enum.proto
+      - include_types_go_packages=github.com/jianyinzhang-mint/protoc-gen-go-govmomi-bridge/fixture/gen/proto/v1

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package proto.v1;
+
+import "google/protobuf/descriptor.proto";
+
+option go_package = "github.com/jiayinzhang-mint/protoc-gen-go-govmomi-bridge/fixture/gen/proto/v1";
+
+extend google.protobuf.FieldOptions {
+  string govmomi = 999999;
+}

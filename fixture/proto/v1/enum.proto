@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package proto.v1;
+
+option go_package = "github.com/jiayinzhang-mint/protoc-gen-go-govmomi-bridge/fixture/gen/proto/v1";
+
+enum PropertyChangeOp {
+  PropertyChangeOp_UNSPECIFIED = 0;
+  PropertyChangeOpAdd = 1;
+  PropertyChangeOpRemove = 2;
+  PropertyChangeOpAssign = 3;
+  PropertyChangeOpIndirectRemove = 4;
+}
