@@ -9,3 +9,7 @@ option go_package = "github.com/jiayinzhang-mint/protoc-gen-go-govmomi-bridge/fi
 extend google.protobuf.FieldOptions {
   string govmomi = 999999;
 }
+
+extend google.protobuf.MessageOptions {
+  string govmomi_alias = 999999;
+}

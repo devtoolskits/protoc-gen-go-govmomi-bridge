@@ -18,6 +18,11 @@ message NetworkProfile {
   repeated VirtualSwitchProfile vswitch = 2 [(govmomi) = "name:Vswitch,type:[]VirtualSwitchProfile"];
 }
 
+message VstorageObjectVCenterQueryChangedDiskAreas {
+  option (govmomi_alias) = "VstorageObjectVCenterQueryChangedDiskAreasRequestType";
+  ManagedObjectReference this = 1 [(govmomi) = "name:This,type:ManagedObjectReference"];
+}
+
 message VstorageObjectVCenterQueryChangedDiskAreasRequestType {
   ManagedObjectReference this = 1 [(govmomi) = "name:This,type:ManagedObjectReference"];
 }
