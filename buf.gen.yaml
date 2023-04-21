@@ -12,4 +12,4 @@ plugins:
     opt:
       - paths=source_relative
       - include_enum_proto_files=proto/v1/enum.proto
-      - include_types_go_packages=github.com/jianyinzhang-mint/protoc-gen-go-govmomi-bridge/fixture/gen/proto/v1
+      - include_types_go_packages=github.com/jiayinzhang-mint/protoc-gen-go-govmomi-bridge/fixture/gen/proto/v1

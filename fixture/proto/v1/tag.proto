@@ -11,5 +11,5 @@ extend google.protobuf.FieldOptions {
 }
 
 extend google.protobuf.MessageOptions {
-  string govmomi_alias = 999999;
+  string govmomi_alias = 999998;
 }

@@ -42,7 +42,7 @@ func main() {
 
 		for _, p := range includeTypesGoPackages {
 			if p == string(f.GoImportPath) {
-				genTypesBridge(gen, f)
+				genGovmomiBridge(gen, f)
 			}
 		}
 
@@ -54,6 +54,10 @@ func main() {
 
 			if len(f.Enums) > 0 {
 				genEnumBridge(gen, f)
+			}
+
+			if len(f.Messages) > 0 {
+				genMessageBridge(gen, f)
 			}
 		}
 

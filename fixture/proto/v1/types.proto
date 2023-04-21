@@ -23,10 +23,6 @@ message VstorageObjectVCenterQueryChangedDiskAreas {
   ManagedObjectReference this = 1 [(govmomi) = "name:This,type:ManagedObjectReference"];
 }
 
-message VstorageObjectVCenterQueryChangedDiskAreasRequestType {
-  ManagedObjectReference this = 1 [(govmomi) = "name:This,type:ManagedObjectReference"];
-}
-
 message ScheduledTaskInfo {
   google.protobuf.Timestamp lastModifiedTime = 1 [(govmomi) = "name:LastModifiedTime,type:time.Time"];
 }

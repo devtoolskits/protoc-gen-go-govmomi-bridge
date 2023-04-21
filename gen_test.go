@@ -83,7 +83,7 @@ func TestManagedObjectReference(t *testing.T) {
 		},
 	}
 
-	ns := &v1.VstorageObjectVCenterQueryChangedDiskAreasRequestType{}
+	ns := &v1.VstorageObjectVCenterQueryChangedDiskAreas{}
 
 	if err := v1.FromGovmomi(vs, ns); err != nil {
 		t.Fatal(err)
