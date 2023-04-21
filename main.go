@@ -33,29 +33,32 @@ func main() {
 	protogen.Options{
 		ParamFunc: flags.Set,
 	}.Run(func(gen *protogen.Plugin) error {
+		// if there are no files to generate, return nil
 		if len(gen.Files) == 0 {
 			return nil
 		}
 
-		// types bridge is a general purpose helper, we only need to generate it once for required package
-		f := gen.Files[0]
-
-		for _, p := range includeTypesGoPackages {
-			if p == string(f.GoImportPath) {
-				genGovmomiBridge(gen, f)
-			}
+		// check if the first file's GoImportPath is included in the includeTypesGoPackages list
+		// if not, return nil
+		if !checkGoImportPath(gen, gen.Files[0]) {
+			return nil
 		}
 
-		// handle enums
+		// generate the bridge
+		genGovmomiBridge(gen)
+
+		// generate the govmomi types
 		for _, f := range gen.Files {
 			if !f.Generate {
 				continue
 			}
 
+			// generate enum bridge
 			if len(f.Enums) > 0 {
 				genEnumBridge(gen, f)
 			}
 
+			// generate message bridge
 			if len(f.Messages) > 0 {
 				genMessageBridge(gen, f)
 			}
@@ -64,4 +67,14 @@ func main() {
 		gen.SupportedFeatures = gengo.SupportedFeatures
 		return nil
 	})
+}
+
+// checkGoImportPath checks if the given file's GoImportPath is included in the includeTypesGoPackages list
+func checkGoImportPath(gen *protogen.Plugin, file *protogen.File) bool {
+	for _, p := range includeTypesGoPackages {
+		if p == string(file.GoImportPath) {
+			return true
+		}
+	}
+	return false
 }

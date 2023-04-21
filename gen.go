@@ -141,7 +141,7 @@ genGovmomiBridge generates the bridge between messages and govmomi types, includ
 
 - FromGovmomi: convert a govmomi struct to a message
 */
-func genGovmomiBridge(gen *protogen.Plugin, file *protogen.File) *protogen.GeneratedFile {
+func genGovmomiBridge(gen *protogen.Plugin) *protogen.GeneratedFile {
 	f := gen.Files[0]
 	// handle messages
 	t, err := template.New("types_govmomi_tamplate").Parse(TypesGovmomiTemplate)
