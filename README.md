@@ -14,15 +14,17 @@ go install github.com/jiayinzhang-mint/protoc-gen-go-govmomi-bridge@latest
 2. Include this plugin in your buf.gen.yaml
    
    Parameters:
-    - `include_proto_files`: A list of proto files with enum definitions to include.
+    - `include_enum_proto_files`: A list of proto files with enum definitions to include.
+    - `include_types_go_packages`: A list of go packages with govmomi-related types definitions to include.
 
 ```yaml
 plugins:
   - name: go-govmomi-bridge
-    out: ./gen/example
+    out: gen
     opt:
       - paths=source_relative
-      - include_proto_files=proto/v1/enum.protoprot
+      - include_enum_proto_files=proto/v1/enum.proto
+      - include_types_go_packages=github.com/jiayinzhang-mint/protoc-gen-go-govmomi-bridge/fixture/gen/proto/v1
 ```
 
 # Author
