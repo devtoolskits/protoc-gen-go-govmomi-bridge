@@ -54,6 +54,14 @@ func genEnumBridge(gen *protogen.Plugin, file *protogen.File) (*protogen.Generat
 
 	g.P()
 
+	// provide a helper function to get the pointer of an enum
+	g.P("// NewPointer returns a pointer to the given value.")
+	g.P("func NewPointer[T any](v T) *T {")
+	g.P("return &v")
+	g.P("}")
+
+	g.P()
+
 	// provide a helper interface for all enums
 	g.P("// Enum is the interface that all enums must implement.")
 	g.P("type Enum interface {")
